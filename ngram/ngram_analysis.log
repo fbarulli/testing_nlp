@@ -1,0 +1,36 @@
+2025-01-16 15:14:55,351 - ngram_p2 - INFO - Initialized NGramLabelAnalyzer with ngram_range=(1, 5)
+2025-01-16 15:14:55,363 - ngram_p2 - INFO - Starting n-gram label analysis
+2025-01-16 15:14:55,719 - ngram_p2 - INFO - Extracting n-grams with range (1, 5)
+2025-01-16 15:15:02,968 - ngram_p2 - INFO - Successfully extracted 85925 n-grams
+2025-01-16 15:50:57,503 - ngram_p2 - INFO - Found 85925 n-grams for label 1
+2025-01-16 15:50:58,017 - ngram_p2 - INFO - Found 85925 n-grams for label 2
+2025-01-16 15:50:58,594 - ngram_p2 - INFO - Found 85925 n-grams for label 3
+2025-01-16 15:50:59,191 - ngram_p2 - INFO - Found 85925 n-grams for label 4
+2025-01-16 15:50:59,779 - ngram_p2 - INFO - Found 85925 n-grams for label 5
+2025-01-16 15:50:59,787 - ngram_p2 - INFO - N-gram processing completed:
+- Total n-grams: 85925
+- Failed n-grams: 0 (0.00%)
+- Final success rate: 100.00%
+2025-01-16 15:51:00,025 - ngram_p2 - INFO - Starting model training with n-gram range: (1, 5)
+2025-01-16 15:51:00,030 - ngram_p2 - INFO - Extracting n-gram features...
+2025-01-16 15:52:10,687 - ngram_p2 - INFO - Number of 1-grams: 3049
+2025-01-16 15:52:10,693 - ngram_p2 - INFO - Number of 2-grams: 686
+2025-01-16 15:52:10,694 - ngram_p2 - INFO - Number of 3-grams: 25
+2025-01-16 15:52:10,696 - ngram_p2 - INFO - Number of 4-grams: 0
+2025-01-16 15:52:10,697 - ngram_p2 - INFO - Number of 5-grams: 0
+2025-01-16 15:52:10,699 - ngram_p2 - INFO - Encoded 5 unique labels
+2025-01-16 15:52:33,313 - ngram_p2 - INFO - Cross-validation ROC-AUC scores: [0.81051234 0.80453773 0.80095889 0.80271486 0.79817281]
+2025-01-16 15:52:33,315 - ngram_p2 - INFO - Mean ROC-AUC: 0.8034
+2025-01-16 15:53:03,981 - ngram_p2 - INFO - 
+Top 1-grams by Mutual Information:
+2025-01-16 15:53:03,982 - ngram_p2 - INFO -   time: 0.2710
+2025-01-16 15:53:03,982 - ngram_p2 - INFO -   service: 0.2549
+2025-01-16 15:53:03,983 - ngram_p2 - INFO -   great: 0.2349
+2025-01-16 15:53:03,984 - ngram_p2 - INFO -   order: 0.2328
+2025-01-16 15:53:03,984 - ngram_p2 - INFO -   good: 0.2135
+2025-01-16 15:53:03,985 - ngram_p2 - INFO - 
+Top 2-grams by Mutual Information:
+2025-01-16 15:53:03,991 - ngram_p2 - INFO -   customer service: 0.1332
+2025-01-16 15:53:12,949 - ngram_p2 - ERROR - SHAP analysis failed: name 'calculate_and_analyze_interactions' is not defined
+2025-01-16 15:53:12,951 - ngram_p2 - WARNING - Continuing despite SHAP analysis error
+2025-01-16 15:53:21,804 - ngram_p2 - INFO - Model training and evaluation completed successfully
