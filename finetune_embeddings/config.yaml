@@ -1,0 +1,115 @@
+# Data Configuration
+data:
+  train_csv_path: "sample.csv"  # do not change
+  val_csv_path: ""  # Leave empty to use automatic validation split
+  text_column: "text"  # Name of the text column in CSV
+  label_column: "rating"  # Name of the rating column (1-5 scale)
+  cache_dir: "cache"  # Directory for caching processed data
+
+# Model Configuration
+model_name: "bert-base-uncased"  # Pre-trained BERT model to use
+num_labels: 5  # Number of output classes (ratings 1-5 mapped to 0-4)
+hidden_dim: 768  # Hidden dimension size
+dropout_rate: 0.1  # Dropout rate for regularization
+
+# Training Configuration
+num_epochs: 5  # Number of training epochs
+batch_size: 8  # Reduced batch size to save memory
+max_length: 256  # Reduced max sequence length
+val_split: 0.1  # Validation split ratio
+num_workers: 4  # Number of dataloader workers
+
+# Optimization Configuration
+learning_rate: 2e-5  # Peak learning rate
+weight_decay: 0.01  # Weight decay for regularization
+warmup_ratio: 0.1  # Portion of training for learning rate warmup
+max_grad_norm: 1.0  # Maximum gradient norm for clipping
+label_smoothing: 0.1  # Label smoothing factor
+
+# Adam Optimizer Configuration
+adam_beta1: 0.9  # Adam beta1 parameter
+adam_beta2: 0.999  # Adam beta2 parameter
+adam_epsilon: 1e-8  # Adam epsilon parameter
+
+# Gradient Accumulation
+gradient_accumulation_steps: 4  # Increased to compensate for smaller batch size
+
+# Mixed Precision Training
+fp16: true  # Enable mixed precision training
+fp16_opt_level: "O1"  # Mixed precision optimization level
+
+# Early Stopping
+early_stopping_patience: 2  # Number of epochs to wait before early stopping
+early_stopping_min_delta: 0.001  # Minimum change to qualify as an improvement
+
+# Logging and Output
+output_dir: "outputs"  # Directory for saving outputs
+logging_steps: 100  # Number of steps between logging
+save_steps: 1000  # Number of steps between model saves
+save_total_limit: 5  # Maximum number of checkpoints to keep
+
+# Hardware Configuration
+cuda: true  # Use CUDA if available
+seed: 42  # Random seed for reproducibility
+
+# Model Monitoring
+monitor_gradients: true  # Monitor gradient norms
+monitor_weights: true  # Monitor weight distributions
+monitor_activations: true  # Monitor layer activations
+
+# Advanced Training Features
+use_layer_wise_lr_decay: true  # Use layer-wise learning rate decay
+lr_decay_rate: 0.95  # Learning rate decay factor between layers
+use_swa: false  # Use Stochastic Weight Averaging
+swa_start: 0.75  # Start SWA at this fraction of training
+swa_lr: 1e-2  # SWA learning rate
+
+# Regularization
+weight_decay_schedule: "linear"  # Weight decay schedule type
+layerwise_lr_decay: true  # Enable layer-wise learning rate decay
+layer_lr_decay: 0.95  # Layer-wise learning rate decay factor
+
+# Architecture Specific
+num_hidden_layers: 2  # Number of additional hidden layers
+use_residual: true  # Use residual connections
+use_layer_norm: true  # Use layer normalization
+activation_function: "gelu"  # Activation function to use
+
+# Evaluation
+eval_strategy: "steps"  # Evaluation strategy (epochs or steps)
+eval_steps: 500  # Number of steps between evaluations
+metric_for_best_model: "loss"  # Metric to use for saving best model
+
+# Pretraining Configuration
+pretraining:
+  # Masked Language Modeling
+  mlm:
+    enabled: true  # Whether to use MLM pretraining
+    probability: 0.15  # Probability of masking a token
+    epochs: 5  # Number of MLM pretraining epochs
+    batch_size: 64  # Batch size for MLM training
+    learning_rate: 5e-5  # Learning rate for MLM
+    weight_decay: 0.01  # Weight decay for MLM
+    max_grad_norm: 1.0  # Maximum gradient norm for MLM
+    warmup_ratio: 0.1  # Warmup ratio for MLM training
+    save_pretrained: true  # Whether to save the pretrained model
+    pretrained_path: "mlm_pretrained"  # Path to save pretrained model
+    loss_weight: 0.1  # Weight of MLM loss in total loss
+
+  # Contrastive Learning
+  contrastive:
+    enabled: true  # Whether to use contrastive learning
+    temperature: 0.07  # Temperature for InfoNCE loss
+    queue_size: 8192  # Reduced queue size to save memory
+    epochs: 5  # Number of contrastive pretraining epochs
+    batch_size: 256  # Batch size for contrastive training
+    learning_rate: 1e-4  # Learning rate for contrastive learning
+    weight_decay: 1e-4  # Weight decay for contrastive learning
+    warmup_ratio: 0.1  # Warmup ratio for contrastive training
+    loss_weight: 0.1  # Weight of contrastive loss in total loss
+    supervised: true  # Whether to use labels in contrastive learning
+    augmentation:
+      enabled: true  # Whether to use data augmentation
+      dropout_prob: 0.1  # Probability of token dropout
+      replace_prob: 0.1  # Probability of token replacement
+      rotate_prob: 0.1  # Probability of token rotation
